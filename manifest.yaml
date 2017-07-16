@@ -1,0 +1,14 @@
+package:
+  name: serverless-workflow-demo
+  version: 1.0
+  license: Apache-2.0
+  actions:
+    workflow:
+      version: 1.0
+      location: main.js
+      runtime: nodejs@6
+      inputs:
+        api_secret:
+          type: String
+          description: Secret Key.
+        
