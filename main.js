@@ -20,7 +20,7 @@ function logData(postData) {
     method: 'post',
     body: postData,
     json: true,
-    url: 'https://requestb.in/u0g37mu0'
+    url: 'https://requestb.in/1htvcv71'
   }
 
 var ACTION_LOAD = "load";
