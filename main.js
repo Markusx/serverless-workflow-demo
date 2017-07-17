@@ -100,7 +100,8 @@ var main = function (params) {
 	}
 	
 logData(params);	
-    
+   
+	/*
      return request({
 		"method":'POST',
         "uri": "http://sensei-face-detection.gw.runtime-test.adobe.io/api/detect",
@@ -119,6 +120,8 @@ logData(params);
 		}).catch(function(err){
             return {error:err};
         });
+	*/
+	
 //    
 //    
 //    return request({
