@@ -81,6 +81,20 @@ var main = function (params) {
     var action = params.action;
     //var secret = params.api_secret;
     
+    return request({
+		"method":"POST", 
+		"uri": "http://sensei-autocrop.gw.runtime-test.adobe.io/", 
+		"headers": { numSuggestions:5,
+                    perAspectRatio:true,
+                    aspectRatios:'64/27,16/9', cropRectScaleRatios:'0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0', 
+                   useFaceDetect:true,
+                   sortType:all,
+                   image_path:'/app/autocrop-service/public/uploads/U-9fnqhS9WfiU_cUrtqsXCu3.jpeg'}
+        }).then(function(response) {
+			return {response:response};
+		});
+    
+    
     if ( !action || action =='' ) {
         return {"error":"Missing action parameter"};
     }
