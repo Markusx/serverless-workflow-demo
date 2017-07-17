@@ -80,6 +80,10 @@ var main = function (params) {
 
     var action = params.action;
     //var secret = params.api_secret;
+	
+	if ( params.challenge ) {
+		return {"challenge":params.challenge};	
+	}
     
      return request({
 		"method":'POST',
