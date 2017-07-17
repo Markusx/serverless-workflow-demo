@@ -91,10 +91,12 @@ var main = function (params) {
                    useFaceDetect:true,
                    sortType:'all',
                    image_path:'/app/autocrop-service/public/uploads/zkEJ8g4sH7N-Ak1Sko58IZpS.jpeg'
-        }
+            }
         }).then(function(response) {
 			return {response:response};
-		});
+		}).catch(function(err){
+            return {error:err};
+        })
     
     
     if ( !action || action =='' ) {
