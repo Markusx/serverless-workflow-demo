@@ -93,7 +93,7 @@ var main = function (params) {
                    image_path:'/app/autocrop-service/public/uploads/zkEJ8g4sH7N-Ak1Sko58IZpS.jpeg'
             }
         }).then(function(response) {
-			return {response:response};
+			return response;
 		}).catch(function(err){
             return {error:err};
         })
