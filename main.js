@@ -24,7 +24,7 @@ function logData(postData) {
   }
   request(options, function (error, response, data) {
     if (!error) {
-      console.log(body);
+      //console.log(body);
     }
   });
 }
