@@ -91,7 +91,7 @@ var main = function (params) {
                     aspectRatios:'64/27,16/9', cropRectScaleRatios:'0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0', 
                    useFaceDetect:'true',
                    sortType:'all',
-                   image_path:'/app/autocrop-service/public/uploads/zkEJ8g4sH7N-Ak1Sko58IZpS.jpeg'
+                   image_path:'/app/autocrop-service/public/uploads/t-x8ULUFVWtTWjbcHjO017P0.jpeg'
             }
         }).then(function(response) {
 			return response;
