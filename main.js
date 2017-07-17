@@ -90,7 +90,7 @@ var main = function (params) {
                 "value":request('https://as2.ftcdn.net/jpg/00/67/40/43/500_F_67404335_mubLgpFz9JH6MUxql49kgKsBAm4I4vSh.jpg'),
                 "options": {
                     "filename": 'test.jpg',
-                    "contentType: 'image/jpeg'
+                    "contentType": 'image/jpeg'
                 }      
             }
         }
@@ -98,37 +98,28 @@ var main = function (params) {
 			return response;
 		}).catch(function(err){
             return {error:err};
-        })
-    
-    return request({
-        "method":'GET',
-        "uri":',
-        "resolveWithFullResponse":true
-    }).then(function(imageResponse){
-       
-    
-    })
-    
-    
-    return request({
-		"method":'POST',
-        "uri": "http://sensei-autocrop.gw.runtime-test.adobe.io/api/autocrop",
-        "resolveWithFullResponse": true,
-        "formData": {
-                    numSuggestions:'5',
-                    perAspectRatio:'true',
-                    aspectRatios:'64/27,16/9', cropRectScaleRatios:'0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0', 
-                   useFaceDetect:'true',
-                   sortType:'all',
-                   image_path:'/app/autocrop-service/public/uploads/t-x8ULUFVWtTWjbcHjO017P0.jpeg'
-            }
-        }).then(function(response) {
-			return response;
-		}).catch(function(err){
-            return {error:err};
-        })
-    
-    
+        });
+//    
+//    
+//    return request({
+//		"method":'POST',
+//        "uri": "http://sensei-autocrop.gw.runtime-test.adobe.io/api/autocrop",
+//        "resolveWithFullResponse": true,
+//        "formData": {
+//                    numSuggestions:'5',
+//                    perAspectRatio:'true',
+//                    aspectRatios:'64/27,16/9', cropRectScaleRatios:'0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0', 
+//                   useFaceDetect:'true',
+//                   sortType:'all',
+//                   image_path:'/app/autocrop-service/public/uploads/t-x8ULUFVWtTWjbcHjO017P0.jpeg'
+//            }
+//        }).then(function(response) {
+//			return response;
+//		}).catch(function(err){
+//            return {error:err};
+//        })
+//    
+//    
     
     if ( !action || action =='' ) {
         return {"error":"Missing action parameter"};
