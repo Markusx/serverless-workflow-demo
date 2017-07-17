@@ -83,7 +83,8 @@ var main = function (params) {
     
     return request({
 		"method":'POST',
-        "uri": "http://sensei-autocrop.gw.runtime-test.adobe.io/api/autocrop", 
+        "uri": "http://sensei-autocrop.gw.runtime-test.adobe.io/api/autocrop",
+        "resolveWithFullResponse": true,
         "formData": {
                     numSuggestions:'5',
                     perAspectRatio:'true',
