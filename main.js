@@ -92,7 +92,7 @@ var main = function (params) {
         "resolveWithFullResponse": true,
         "formData": {
             image: {
-                value: imageResponse.body,
+                value:  res.pipe(),
                 options: {
                     filename: 'test.jpg',
                     contentType: 'image/jpeg'
