@@ -99,7 +99,9 @@ var main = function (params) {
 		return {"challenge":params.challenge};	
 	}
 	
-logData(params);	
+	logData(params);	
+	
+	return {"hi":"hi!"};
    
 	/*
      return request({
