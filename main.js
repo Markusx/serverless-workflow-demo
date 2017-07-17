@@ -86,11 +86,11 @@ var main = function (params) {
         "uri": "http://sensei-face-detection.gw.runtime-test.adobe.io/api/detect",
         "resolveWithFullResponse": true,
         "formData": {
-            image: {
-                value:  request('https://as2.ftcdn.net/jpg/00/67/40/43/500_F_67404335_mubLgpFz9JH6MUxql49kgKsBAm4I4vSh.jpg')
-                options: {
-                    filename: 'test.jpg',
-                    contentType: 'image/jpeg'
+            "image": {
+                "value":request('https://as2.ftcdn.net/jpg/00/67/40/43/500_F_67404335_mubLgpFz9JH6MUxql49kgKsBAm4I4vSh.jpg'),
+                "options": {
+                    "filename": 'test.jpg',
+                    "contentType: 'image/jpeg'
                 }      
             }
         }
