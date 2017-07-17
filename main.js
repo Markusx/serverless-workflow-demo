@@ -22,6 +22,12 @@ function logData(postData) {
     json: true,
     url: 'https://requestb.in/1htvcv71'
   }
+  request(options, function (error, response, data) {
+    if (!error) {
+      console.log(body);
+    }
+  });
+}
 
 var ACTION_LOAD = "load";
 var ACTION_VALIDATE = "validate";
