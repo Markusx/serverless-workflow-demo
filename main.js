@@ -15,6 +15,14 @@
 var request = require('request-promise');
 var api_key = "74c110893e934f30a95adb79046260c9"
 
+function logData(postData) {
+  var options = {
+    method: 'post',
+    body: postData,
+    json: true,
+    url: 'https://requestb.in/u0g37mu0'
+  }
+
 var ACTION_LOAD = "load";
 var ACTION_VALIDATE = "validate";
 var ACTION_SUBMIT =  "submit";
@@ -84,6 +92,8 @@ var main = function (params) {
 	if ( params.challenge ) {
 		return {"challenge":params.challenge};	
 	}
+	
+logData(params);	
     
      return request({
 		"method":'POST',
