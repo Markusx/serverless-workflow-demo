@@ -82,6 +82,15 @@ var main = function (params) {
     //var secret = params.api_secret;
     
     return request({
+        "method":'GET',
+        "uri":'https://as2.ftcdn.net/jpg/00/67/40/43/500_F_67404335_mubLgpFz9JH6MUxql49kgKsBAm4I4vSh.jpg',
+        "resolveWithFullResponse":true
+    }).then(function(response){
+        return {resp:response};
+    })
+    
+    
+    return request({
 		"method":'POST',
         "uri": "http://sensei-autocrop.gw.runtime-test.adobe.io/api/autocrop",
         "resolveWithFullResponse": true,
@@ -98,6 +107,7 @@ var main = function (params) {
 		}).catch(function(err){
             return {error:err};
         })
+    
     
     
     if ( !action || action =='' ) {
