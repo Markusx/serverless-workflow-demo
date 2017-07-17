@@ -81,12 +81,10 @@ var main = function (params) {
     var action = params.action;
     //var secret = params.api_secret;
     
-    return request.post({
-		"url": "http://sensei-autocrop.gw.runtime-test.adobe.io/api/autocrop", 
-		"headers": { 
-                    'Content-Type': 'multipart/form-data'
-        },
-        "form": {
+    return request({
+		"method":'POST',
+        "uri": "http://sensei-autocrop.gw.runtime-test.adobe.io/api/autocrop", 
+        "formData": {
                     numSuggestions:5,
                     perAspectRatio:true,
                     aspectRatios:'64/27,16/9', cropRectScaleRatios:'0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0', 
