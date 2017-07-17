@@ -85,8 +85,26 @@ var main = function (params) {
         "method":'GET',
         "uri":'https://as2.ftcdn.net/jpg/00/67/40/43/500_F_67404335_mubLgpFz9JH6MUxql49kgKsBAm4I4vSh.jpg',
         "resolveWithFullResponse":true
-    }).then(function(response){
-        return {resp:response};
+    }).then(function(imageResponse){
+        return request({
+		"method":'POST',
+        "uri": "http://sensei-face-detection.gw.runtime-test.adobe.io/api/detect",
+        "resolveWithFullResponse": true,
+        "formData": {
+            image: {
+                value: imageResponse.body,
+                options: {
+                    filename: 'test.jpg',
+                    contentType: 'image/jpeg'
+            }
+        }
+            }   
+        }).then(function(response) {
+			return response;
+		}).catch(function(err){
+            return {error:err};
+        })
+    
     })
     
     
