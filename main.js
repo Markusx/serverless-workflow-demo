@@ -11,72 +11,66 @@
  * either express or implied.  See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+//includes
 var request = require('request-promise');
-var api_key = "74c110893e934f30a95adb79046260c9"
+
+
+//constants
+var API_KEY = "74c110893e934f30a95adb79046260c9";
+
+var REQUEST_BIN_URL ="https://requestb.in/1htvcv71";
+
+
+var SENSEI_SERVICE_IMAGE_QUALITY="imageQuality";
+var SENSEI_SERVICE_AUTO_CROP="autoCrop";
+var SENSEI_SERVICE_COLOUR_SWATCH="colourSwatch";
+var SENSEI_SERVICE_SMART_TAGGING="smartTagging";
+
+var SENSEI_SERVICE_ENDPOINTS = {
+    "imageQuality":"image quality endpoint here",
+    "autoCrop":"image crop endpoint here",
+    "colourSwatch":"image colour swatch",
+    "smartTagging":"image smart tagging"
+}
+
+
+//end of constants
+
+
+
+
+
+//helper functions ///
+
+function getEndpoint(serviceName){
+    return SENSEI_SERVICE_ENDPOINTS[serviceName];
+}
+
+function createActionChain(actionsArray) {
+    
+    if ( !actionsArray || actionsArray.length == 0) {
+       returnError("Actions Array is empty");
+    }
+}
+
+function returnError(errorString){
+    return {"error":"Returned with the following error" + errorString };
+}
 
 function logData(postData) {
   var options = {
     method: 'post',
     body: postData,
     json: true,
-    url: 'https://requestb.in/1htvcv71'
+    url: REQUEST_BIN_URL
   }
-  request(options, function (error, response, data) {
-    if (!error) {
-      //console.log(body);
-    }
-  });
-}
-
-var ACTION_LOAD = "load";
-var ACTION_VALIDATE = "validate";
-var ACTION_SUBMIT =  "submit";
-var ACTION_ENCRYPT = "encrypt";
-
-function loadDialog() {
-    
-    return {
-        "type":"dialog",
-        "properties":{
-            "headerText":"Post to Microsoft Teams",
-            "bodyText":"",
-            "buttonOkayText":"SUBMIT"
-        },
-
-        "children": [   
-            {
-                "type":"textarea",
-                "properties":{
-                    "label":"Message",
-                    "text":"Message",
-                    "placeholder":"check out this cool design in Creative Cloud",
-                    "propertyName":"message"
-                }
-            }
-        ]
-    
-    }
-}
-
-
-function validate() {
-    
-    return {
-        "success":true,
-        "valid":true
-    }
-}
-
-
-function submit(params) {
-    
-    var secret = params.api_secret;
-    var decToken = decrypt(secretToken, secret);
-	var assetName = params.additionalData.name;
-    return getMetadata(assetName,decToken);
+  
+  request(options);
     
 }
+
+
+//end of helper functions 
 
 function getMetadata(assetName, token) { 
     
@@ -90,9 +84,19 @@ function getMetadata(assetName, token) {
 }
 
 
+
+
+
 var main = function (params) {
 
-    var action = params.action;
+    var actions = params.actions;
+    
+    
+    if ( !actions ) {
+        return returnError("actions array is empty or missing");
+    }
+    
+    
     //var secret = params.api_secret;
 	
 	if ( params.challenge ) {
@@ -101,7 +105,6 @@ var main = function (params) {
 	
 	logData(params);	
 	
-	return {"hi":"hi!"};
    
 	/*
      return request({
@@ -150,32 +153,4 @@ var main = function (params) {
         return {"error":"Missing action parameter"};
     }
 	
-//    if ( !secret || secret =='' ) {
-//        return {"error":"Missing api_secret parameter"};
-//    }
-//    
-		
-    
-    switch ( action ) {
-            
-        case ACTION_LOAD:
-            return loadDialog(params);
-        break;
-            
-        case ACTION_VALIDATE:
-            return validate(params);
-        break;
-            
-        case ACTION_SUBMIT:
-            return submit(params);
-        break;
-  
-        case ACTION_ENCRYPT:
-            return keyEncrypt(params);
-        break;
-            
-        default:
-            return {"error":"No matching action found"};
-        break;
-    }
 };
